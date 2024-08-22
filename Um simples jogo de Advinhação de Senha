@@ -1,0 +1,88 @@
+#O jogo irá consistir em advinha uma senha de 4 
+#dígitos que estarão entre 1 e 10. Cada tentativa
+#deve conter 4 dígitos e será avaliada como certos 
+#e errados entre O e X.
+#Vence quem acertar os 4 dígitos.
+
+#Definição aleatória da senha
+
+print('*--------------------------------------*')
+print('    Seja em vindo ao Guessing Game!')
+print('*--------------------------------------*\n')
+
+print('Este é o meu primeiro código em python')
+print('Seu objetivo é descobrir a minha senha.')
+print('Escolha 4 números entre 1 e 10 e tente sua sorte.')
+
+#Definindo a senha
+import random
+from time import sleep
+senha = [random.randint(1,10),random.randint(1,10),random.randint(1,10),random.randint(1,10)]
+
+#Código
+
+#Contador de tentativas
+tentativas = []
+
+while True:
+    tenta = []
+    #Recebendo a senha do usuário
+    if len(tentativas)==0:
+        print("\nPronto para tentar adivinhar a minha senha?\n")
+    else:
+        print('\nPronto para tentar de novo?\n')
+
+    numb1 = int(input("Qual o primeiro número?\n"))
+    if numb1 < 1 or numb1 > 10:
+        print('Os números estão entre 1 e 10 apenas.\n')
+        continue
+    tenta.append(numb1)
+    numb2 = int(input("Qual o segundo número?\n"))
+    if numb2 < 1 or numb2 > 10:
+        print('Os números estão entre 1 e 10 apenas.\n')
+        continue
+    tenta.append(numb2)
+    numb3 = int(input("Qual o terceiro número?\n"))
+    if numb3 < 1 or numb3 > 10:
+        print('Os números estão entre 1 e 10 apenas.\n')
+        continue
+    tenta.append(numb3)
+    numb4 = int(input("Qual o quarto número?\n"))
+    if numb4 < 1 or numb4 > 10:
+        print('Os números estão entre 1 e 10 apenas.\n')
+        continue
+    tenta.append(numb4)
+
+    def sleeping(num):
+        while num != 0:
+            sleep(1)
+            print('')
+            num = num - 1
+
+    sleeping(3)
+    print('Sua senha é ',tenta)
+    sleeping(3)
+
+    tentativas.append(1)
+
+    #Testar senha se está correta
+    if tenta==senha:
+        print('\nParabéns, você advinhou a minha senha!')
+        print(f'Isso só levou {len(tentativas)} tentativas\n')
+        break
+    
+    #Marcar quais números foram corretos.
+    corretos = []
+    if tenta[0] == senha[0]:
+        corretos.append(1)
+    if tenta[1] == senha[1]:
+        corretos.append(1)
+    if tenta[2] == senha[2]:
+        corretos.append(1)
+    if tenta[3] == senha[3]:
+        corretos.append(1)
+    print(f'Você acertou {len(corretos)} números da senha! \nNão desista, você consegue!')
+    sleep(3)
+    if len(corretos) == 3:
+        print('Você está tão perto!! Vamos lá!')
+    
